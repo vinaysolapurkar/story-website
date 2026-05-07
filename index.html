@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tales &amp; Parables of Sri Ramakrishna</title>
+<meta name="description" content="Two hundred and one stories from the conversations of Sri Ramakrishna." />
+<meta name="theme-color" content="#a04a1e" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#14110d" media="(prefers-color-scheme: dark)" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Stories" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/favicon-64.png" type="image/png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300..900;1,300..900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f0e4;
+  --bg-card: #fffaf0;
+  --bg-elev: #efe6d2;
+  --ink: #2a2017;
+  --ink-soft: #6e5d48;
+  --accent: #a04a1e;
+  --accent-soft: #d8a47a;
+  --vk: #2c5b66;     /* teal for Vivekananda */
+  --vk-soft: #8fb6bf;
+  --rule: #d6c9aa;
+  --shadow: 0 1px 2px rgba(60,40,20,.04), 0 8px 24px rgba(60,40,20,.06);
+}
+[data-theme="dark"] {
+  --bg: #14110d;
+  --bg-card: #1c1814;
+  --bg-elev: #251f17;
+  --ink: #e8dcc6;
+  --ink-soft: #a9967a;
+  --accent: #e0a060;
+  --accent-soft: #6e4a26;
+  --vk: #88c4cf;
+  --vk-soft: #2e4a52;
+  --rule: #3a2f22;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+  font-size: 19px;
+  line-height: 1.7;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background .4s ease, color .4s ease;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--rule);
+  padding-top: env(safe-area-inset-top);
+}
+.nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 12px 20px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  min-height: 56px;
+}
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--ink);
+  text-decoration: none;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.brand .om { color: var(--accent); margin-right: 6px; }
+.brand .label-full { display: inline; }
+.brand .label-short { display: none; }
+.nav .grow { flex: 1; }
+.nav button, .nav input, .chip {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+  min-height: 38px;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav button:active { transform: scale(0.97); }
+.nav button:hover, .chip:hover { border-color: var(--accent-soft); }
+.nav input { width: 220px; padding-left: 14px; }
+.nav input:focus { outline: 2px solid var(--accent-soft); outline-offset: 0; border-color: transparent; }
+.btn-text { display: inline; }
+.btn-icon { display: none; }
+@media (max-width: 760px) {
+  .nav { padding: 10px 14px; gap: 6px; }
+  .nav input { width: 100%; max-width: 130px; flex: 1 1 auto; padding: 8px 12px; font-size: 14px; }
+  .brand { font-size: 17px; }
+  .nav button { padding: 8px 12px; }
+}
+@media (max-width: 480px) {
+  .brand .label-full { display: none; }
+  .brand .label-short { display: inline; }
+  .btn-text { display: none; }
+  .btn-icon { display: inline; }
+  .nav button { padding: 8px 11px; min-width: 38px; }
+  .nav input { font-size: 14px; max-width: none; }
+}
+
+main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+@media (max-width: 640px) {
+  main { padding: 16px; }
+}
+@media (max-width: 380px) {
+  main { padding: 14px; }
+}
+
+/* ---------- INDEX VIEW ---------- */
+.hero {
+  text-align: center;
+  padding: 48px 16px 32px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.hero .om {
+  font-size: 64px;
+  color: var(--accent);
+  line-height: 1;
+  font-family: 'Cormorant Garamond', serif;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(34px, 7vw, 52px);
+  line-height: 1.1;
+  margin: 14px 0 10px;
+  letter-spacing: -.01em;
+}
+.hero .subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: clamp(16px, 2.4vw, 20px);
+  margin: 0 auto;
+  max-width: 620px;
+  padding: 0 8px;
+}
+.hero .epigraph {
+  margin: 32px auto 0;
+  max-width: 540px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--accent-soft);
+  padding-left: 18px;
+  text-align: left;
+}
+.hero .epigraph cite {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  opacity: .75;
+}
+
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+.chip {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: .01em;
+}
+.chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.chip .count { opacity: .55; margin-left: 6px; font-variant-numeric: tabular-nums; }
+.chip svg { width: 13px; height: 13px; vertical-align: -2px; margin-right: 5px; fill: currentColor; }
+[data-theme="dark"] .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+.toolbar {
+  display: flex; gap: 12px; align-items: center;
+  margin-bottom: 28px; flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.toolbar .count { font-variant-numeric: tabular-nums; }
+.cta-random {
+  margin-left: auto;
+  background: var(--accent);
+  color: #fff !important;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.cta-random:hover { filter: brightness(1.1); }
+[data-theme="dark"] .cta-random { color: #14110d !important; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform .15s ease, box-shadow .25s ease, border-color .2s;
+  box-shadow: var(--shadow);
+  border-left-width: 3px;
+}
+.card.rk { border-left-color: var(--accent); }
+.card.vk { border-left-color: var(--vk); }
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-soft);
+  box-shadow: 0 4px 12px rgba(60,40,20,.08), 0 16px 32px rgba(60,40,20,.10);
+}
+.card.vk:hover { border-color: var(--vk-soft); }
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,.4), 0 16px 32px rgba(0,0,0,.5);
+}
+.card .meta {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.card .speaker { color: var(--accent); }
+.card.vk .speaker { color: var(--vk); }
+.card .num { color: var(--ink-soft); font-weight: 500; }
+.card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -.005em;
+}
+.card .preview {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.empty {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 60px 20px;
+  font-style: italic;
+}
+.load-more {
+  display: block;
+  margin: 36px auto 0;
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font: inherit;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+.load-more:hover { border-color: var(--accent-soft); color: var(--ink); }
+
+/* ---------- READING VIEW ---------- */
+.reader {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 8px 24px 80px;
+}
+@media (max-width: 640px) {
+  .reader { padding: 4px 4px 60px; }
+}
+.reader .back {
+  display: inline-flex; align-items: center; gap: 6px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: .04em;
+  margin: 28px 0 32px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.reader .back:hover { border-color: var(--rule); color: var(--ink); }
+
+.reader .meta {
+  display: flex; justify-content: center; gap: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.reader.vk .meta { color: var(--vk); }
+.reader .meta .num { color: var(--ink-soft); font-weight: 500; }
+.reader h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 5.5vw, 40px);
+  line-height: 1.15;
+  text-align: center;
+  margin: 0 0 8px;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.reader .source {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0 0 30px;
+  letter-spacing: .01em;
+}
+.reader .ornament {
+  text-align: center;
+  color: var(--accent-soft);
+  font-size: 22px;
+  letter-spacing: 1em;
+  padding-left: 1em;
+  margin: 0 0 28px;
+}
+.reader.vk .ornament { color: var(--vk-soft); }
+.reader .body {
+  font-size: clamp(17.5px, 2.6vw, 21px);
+  line-height: 1.78;
+}
+.reader .body p {
+  margin: 0 0 1.2em;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+@media (max-width: 640px) {
+  .reader .body { line-height: 1.7; }
+  .reader .body p { text-align: left; }
+  .reader .body p:first-child::first-letter {
+    font-size: 3.6em;
+    padding-right: 0.06em;
+  }
+}
+.reader .body p:first-child::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  float: left;
+  font-size: 4.4em;
+  line-height: 0.85;
+  padding: 0.06em 0.08em 0 0;
+  color: var(--accent);
+}
+.reader.vk .body p:first-child::first-letter { color: var(--vk); }
+.reader .endmark {
+  text-align: center;
+  margin: 48px 0 0;
+  color: var(--accent-soft);
+  font-size: 22px;
+}
+.reader.vk .endmark { color: var(--vk-soft); }
+.reader-nav {
+  display: flex; gap: 10px; align-items: stretch;
+  margin: 56px 0 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+}
+.reader-nav a {
+  flex: 1; min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  display: flex; flex-direction: column; gap: 4px;
+  transition: border-color .2s;
+  min-height: 64px;
+  overflow: hidden;
+}
+.reader-nav .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.reader-nav a:hover { border-color: var(--accent-soft); }
+.reader-nav a.disabled { pointer-events: none; opacity: .35; }
+.reader-nav .label {
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.reader-nav .title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.reader-nav .right { text-align: right; }
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .hero { padding: 36px 14px 28px; margin-bottom: 24px; }
+  .hero .om { font-size: 52px; }
+  .hero .epigraph { margin-top: 26px; font-size: 19px; padding-left: 14px; }
+  .filter-bar { gap: 6px; margin-bottom: 14px; }
+  .chip { padding: 6px 12px; font-size: 12.5px; }
+  .toolbar { gap: 8px; margin-bottom: 18px; }
+  .cta-random { padding: 10px 16px; font-size: 13.5px; }
+  .card { padding: 16px 18px 14px; border-radius: 10px; }
+  .card h2 { font-size: 19px; }
+  .card .preview { font-size: 14.5px; }
+  .reader-nav { gap: 8px; margin-top: 40px; }
+  .reader-nav a { padding: 12px 14px; min-height: 56px; }
+  .reader-nav .title { font-size: 16px; }
+  .reader-nav .label { font-size: 10px; }
+  .reader .source { font-size: 12px; padding: 0 10px; }
+}
+
+.fade-in { animation: fadein .35s ease both; }
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- BOOKMARK ---------- */
+.bm {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  transition: color .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.bm:hover { color: var(--accent); }
+.bm:active { transform: scale(0.9); }
+.bm.is-on { color: var(--accent); }
+.bm svg { display: block; width: 20px; height: 20px; fill: currentColor; }
+.card { position: relative; }
+.card .bm { position: absolute; top: 12px; right: 12px; }
+.reader .bm-row {
+  display: flex; justify-content: center; gap: 8px;
+  margin: 12px 0 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.reader .bm-row .bm svg { width: 18px; height: 18px; }
+.reader .bm-row .bm { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px 6px 10px; border: 1px solid var(--rule); border-radius: 999px; }
+.reader .bm-row .bm span { font-size: 12.5px; letter-spacing: .02em; }
+.reader .bm-row .bm.is-on { border-color: var(--accent); }
+
+/* ---------- ACCOUNT MODAL ---------- */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(20, 17, 13, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadein .2s ease;
+}
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  max-width: 380px;
+  width: 100%;
+  padding: 28px 28px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+.modal h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin: 0 0 6px;
+  color: var(--ink);
+  letter-spacing: -.005em;
+}
+.modal .modal-sub { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 22px; line-height: 1.5; }
+.modal .close {
+  position: absolute; top: 14px; right: 14px;
+  background: transparent; border: none; cursor: pointer;
+  color: var(--ink-soft); font-size: 22px;
+  line-height: 1; padding: 6px 10px;
+  border-radius: 999px;
+}
+.modal .close:hover { color: var(--ink); }
+.modal label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); margin: 12px 0 6px; letter-spacing: .04em; text-transform: uppercase; }
+.modal input {
+  width: 100%; padding: 11px 14px;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  color: var(--ink);
+  font: inherit; font-size: 15px;
+}
+.modal input:focus { outline: 2px solid var(--accent-soft); outline-offset: 0; border-color: transparent; }
+.modal .submit {
+  width: 100%; margin-top: 18px;
+  background: var(--accent); color: #fff !important;
+  border: none; padding: 12px; border-radius: 10px;
+  font: inherit; font-weight: 500; font-size: 15px; letter-spacing: .02em;
+  cursor: pointer; transition: filter .15s;
+  min-height: 44px;
+}
+[data-theme="dark"] .modal .submit { color: #14110d !important; }
+.modal .submit:hover { filter: brightness(1.1); }
+.modal .submit:disabled { opacity: .5; cursor: wait; }
+.modal .toggle {
+  text-align: center; margin-top: 14px; font-size: 13px; color: var(--ink-soft);
+}
+.modal .toggle button {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--accent); font: inherit; font-weight: 500;
+  padding: 0 4px;
+}
+.modal .toggle button:hover { text-decoration: underline; }
+.modal .err {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--accent);
+  padding: 10px 12px; border-radius: 8px; font-size: 13px; margin: 10px 0 0;
+}
+.modal .ok {
+  background: color-mix(in srgb, var(--accent-soft) 30%, transparent);
+  border: 1px solid var(--accent-soft);
+  color: var(--ink);
+  padding: 10px 12px; border-radius: 8px; font-size: 13px; margin: 10px 0 0;
+}
+.modal .skip {
+  display: block; width: 100%; text-align: center; margin-top: 16px;
+  background: transparent; border: 1px solid var(--rule);
+  color: var(--ink-soft); padding: 10px; border-radius: 10px;
+  font: inherit; font-size: 13.5px; cursor: pointer;
+}
+.modal .skip:hover { color: var(--ink); }
+.modal .me-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 14px 0 0; }
+.modal .me-row .email { font-size: 14px; color: var(--ink); word-break: break-all; }
+.modal .me-row .logout { padding: 8px 14px; font-size: 13px; }
+
+/* ---------- AUDIO PLAYER ---------- */
+.player {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 8px 8px 8px 12px;
+  margin: 18px auto 8px;
+  max-width: 440px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow);
+}
+.player .play {
+  width: 38px; height: 38px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
+  transition: filter .15s, background .15s;
+}
+[data-theme="dark"] .player .play { color: #14110d; }
+.player .play:hover { filter: brightness(1.1); }
+.player .play svg { width: 18px; height: 18px; fill: currentColor; }
+.player .time { font-variant-numeric: tabular-nums; min-width: 38px; flex: 0 0 auto; }
+.player .scrub {
+  flex: 1; appearance: none; background: transparent; height: 4px;
+  margin: 0;
+  cursor: pointer;
+}
+.player .scrub::-webkit-slider-runnable-track { background: var(--rule); height: 4px; border-radius: 999px; }
+.player .scrub::-moz-range-track { background: var(--rule); height: 4px; border-radius: 999px; }
+.player .scrub::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 999px; background: var(--accent); margin-top: -5px; }
+.player .scrub::-moz-range-thumb { width: 14px; height: 14px; border-radius: 999px; background: var(--accent); border: none; }
+.player .speed {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font: inherit; font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  min-width: 42px;
+  flex: 0 0 auto;
+}
+.player .speed:hover { color: var(--ink); border-color: var(--accent-soft); }
+.player .cont {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font: inherit; font-size: 11.5px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.player .cont[aria-pressed="true"] {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+[data-theme="dark"] .player .cont[aria-pressed="true"] { color: #14110d; }
+.player .cont:hover { border-color: var(--accent-soft); }
+.player.unavail { opacity: .5; pointer-events: none; }
+.player .play.loading svg { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@media (max-width: 640px) {
+  .player { padding: 6px 6px 6px 10px; gap: 6px; }
+  .player .play { width: 34px; height: 34px; }
+  .player .time { font-size: 11.5px; min-width: 32px; }
+  .player .speed { padding: 4px 7px; min-width: 36px; }
+  .player .cont { padding: 5px 8px; font-size: 11px; }
+}
+</style>
+</head>
+<body data-theme="light">
+<header>
+  <div class="nav">
+    <a class="brand" href="#/">
+      <span class="om">ॐ</span><span class="label-full">Tales &amp; Parables</span><span class="label-short">Tales</span>
+    </a>
+    <span class="grow"></span>
+    <input id="search" type="search" placeholder="Search…" aria-label="Search stories" enterkeyhint="search" />
+    <button id="random" title="Random story" aria-label="Random story"><span class="btn-icon">↬</span><span class="btn-text">↬ Random</span></button>
+    <button id="account" title="Account" aria-label="Account"><span class="btn-icon">◉</span><span class="btn-text">Sign in</span></button>
+    <button id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">☾</button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+const STORIES_URL = "stories.json";
+let STORIES = [];
+let FILTER_TEXT = "";
+let FILTER_SPEAKER = "all"; // 'all' | 'ramakrishna' | 'vivekananda'
+let FILTER_BOOKMARKS = false;
+let PAGE_SIZE = 60;
+let RENDERED_PAGE = 1;
+
+// Continuous play (autoplay next on end). Persisted.
+let CONTINUOUS_PLAY = localStorage.getItem("tales-continuous") === "1";
+let PLAYBACK_SPEED = parseFloat(localStorage.getItem("tales-speed") || "1") || 1;
+let AUDIO_MANIFEST = null; // { ids: Set<number> }
+let CURRENT_AUDIO = null;
+
+// ---------- AUTH STATE ----------
+let USER = null; // { id, email } when signed in
+const BM_LOCAL_KEY = "tales-bookmarks-local";
+
+function localBookmarks() {
+  try { return new Set(JSON.parse(localStorage.getItem(BM_LOCAL_KEY) || "[]")); }
+  catch { return new Set(); }
+}
+function saveLocalBookmarks(set) {
+  localStorage.setItem(BM_LOCAL_KEY, JSON.stringify([...set]));
+}
+
+// In-memory Set of bookmarked story IDs (synced from server when signed in, else from localStorage)
+let BOOKMARKS = localBookmarks();
+
+async function fetchMe() {
+  try {
+    const r = await fetch("/api/auth/me", { credentials: "same-origin" });
+    if (!r.ok) return null;
+    const { user } = await r.json();
+    return user;
+  } catch { return null; }
+}
+
+async function fetchServerBookmarks() {
+  const r = await fetch("/api/bookmarks", { credentials: "same-origin" });
+  if (!r.ok) return null;
+  const { bookmarks } = await r.json();
+  return new Set(bookmarks);
+}
+
+async function setBookmark(storyId, on) {
+  // Optimistic local update
+  if (on) BOOKMARKS.add(storyId); else BOOKMARKS.delete(storyId);
+  if (USER) {
+    const url = `/api/bookmarks/${storyId}`;
+    const opts = { method: on ? "POST" : "DELETE", credentials: "same-origin" };
+    fetch(url, opts).catch(() => {/* keep optimistic state */});
+  } else {
+    saveLocalBookmarks(BOOKMARKS);
+  }
+}
+
+async function syncLocalToServer() {
+  const local = [...localBookmarks()];
+  if (!local.length) return BOOKMARKS;
+  const r = await fetch("/api/bookmarks/sync", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ ids: local }),
+  });
+  if (r.ok) {
+    const { bookmarks } = await r.json();
+    localStorage.removeItem(BM_LOCAL_KEY);
+    return new Set(bookmarks);
+  }
+  return BOOKMARKS;
+}
+
+async function load() {
+  const [r, me, am] = await Promise.all([
+    fetch(STORIES_URL, { cache: "no-cache" }),
+    fetchMe(),
+    fetch("audio_manifest.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : []).catch(() => []),
+  ]);
+  STORIES = await r.json();
+  USER = me;
+  AUDIO_MANIFEST = new Set((am || []).map(x => x.id));
+  if (USER) {
+    const sb = await fetchServerBookmarks();
+    if (sb) BOOKMARKS = sb;
+  }
+  render();
+  updateAccountButton();
+}
+
+function updateAccountButton() {
+  const btn = document.getElementById("account");
+  if (!btn) return;
+  if (USER) {
+    btn.querySelector(".btn-text").textContent = USER.email.split("@")[0];
+    btn.querySelector(".btn-icon").textContent = "●";
+    btn.title = USER.email;
+  } else {
+    btn.querySelector(".btn-text").textContent = "Sign in";
+    btn.querySelector(".btn-icon").textContent = "◉";
+    btn.title = "Sign in to sync bookmarks";
+  }
+}
+
+function parseRoute() {
+  const h = location.hash.replace(/^#\/?/, "");
+  if (!h) return { name: "index" };
+  const m = h.match(/^story\/(\d+)/);
+  if (m) return { name: "story", id: parseInt(m[1], 10) };
+  return { name: "index" };
+}
+
+function previewText(s) {
+  const text = s.content.replace(/\s+/g, " ").trim();
+  if (text.length <= 180) return text;
+  const slice = text.slice(0, 180);
+  const lastSpace = slice.lastIndexOf(" ");
+  return slice.slice(0, lastSpace > 100 ? lastSpace : 180) + "…";
+}
+
+function titleCase(s) {
+  if (!s) return s;
+  // Don't change titles that already have mixed case
+  const isAllCaps = s === s.toUpperCase() && /[A-Z]/.test(s);
+  if (!isAllCaps) return s;
+  return s.toLowerCase().replace(/(^|[\s'"\-—])(\w)/g, (_, p, c) => p + c.toUpperCase());
+}
+
+function escapeHTML(s) {
+  return String(s || "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]));
+}
+
+function speakerKey(s) {
+  return s.speaker.toLowerCase().includes("ramakrishna") ? "rk" : "vk";
+}
+function speakerShort(s) {
+  return speakerKey(s) === "rk" ? "Sri Ramakrishna" : "Swami Vivekananda";
+}
+
+function heartSVG(filled) {
+  if (filled) {
+    return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.5C.6 7.6 3.2 4 7 4c2 0 3.7 1 5 2.5C13.3 5 15 4 17 4c3.8 0 6.4 3.6 5 7.5C19.5 16.4 12 21 12 21Z"/></svg>`;
+  }
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 20.3s-7-4.3-9.3-8.8C1.5 8 3.7 5 7 5c2 0 3.7 1.1 5 2.7C13.3 6.1 15 5 17 5c3.3 0 5.5 3 4.3 6.5C19 16 12 20.3 12 20.3Z"/></svg>`;
+}
+
+function bmButton(storyId, big = false) {
+  const on = BOOKMARKS.has(storyId);
+  return `<button class="bm ${on ? 'is-on' : ''}" data-bm="${storyId}" title="${on ? 'Remove bookmark' : 'Bookmark this story'}" aria-label="${on ? 'Remove bookmark' : 'Bookmark this story'}" aria-pressed="${on}">${heartSVG(on)}${big ? '<span>'+(on ? 'Bookmarked' : 'Bookmark')+'</span>' : ''}</button>`;
+}
+
+function paragraphize(text) {
+  const cleaned = text.replace(/\r\n/g, "\n").trim();
+  const paras = cleaned.split(/\n{2,}/).map(p => p.replace(/\n/g, " ").trim()).filter(Boolean);
+  if (paras.length <= 1) {
+    const sentences = cleaned.match(/[^.!?]+[.!?]+["']?/g) || [cleaned];
+    const out = []; let buf = [];
+    for (const sent of sentences) {
+      buf.push(sent.trim());
+      if (buf.length >= 3 && buf.join(" ").length > 280) { out.push(buf.join(" ")); buf = []; }
+    }
+    if (buf.length) out.push(buf.join(" "));
+    return out.length ? out : [cleaned];
+  }
+  return paras;
+}
+
+function filterStories() {
+  return STORIES.filter(s => {
+    if (FILTER_SPEAKER === "ramakrishna" && speakerKey(s) !== "rk") return false;
+    if (FILTER_SPEAKER === "vivekananda" && speakerKey(s) !== "vk") return false;
+    if (FILTER_BOOKMARKS && !BOOKMARKS.has(s.id)) return false;
+    if (!FILTER_TEXT) return true;
+    const f = FILTER_TEXT.toLowerCase();
+    return s.title.toLowerCase().includes(f) || s.content.toLowerCase().includes(f);
+  });
+}
+
+function renderIndex() {
+  const all = filterStories();
+  const visible = all.slice(0, RENDERED_PAGE * PAGE_SIZE);
+
+  const counts = {
+    all: STORIES.length,
+    rk: STORIES.filter(s => speakerKey(s) === "rk").length,
+    vk: STORIES.filter(s => speakerKey(s) === "vk").length,
+  };
+
+  const cards = visible.map(s => {
+    const k = speakerKey(s);
+    return `
+    <a class="card ${k}" href="#/story/${s.id}">
+      <div class="meta">
+        <span class="speaker">${escapeHTML(speakerShort(s))}</span>
+        <span class="num">№ ${s.id}</span>
+      </div>
+      <h2>${escapeHTML(titleCase(s.title))}</h2>
+      <p class="preview">${escapeHTML(previewText(s))}</p>
+      ${bmButton(s.id, false)}
+    </a>`;
+  }).join("");
+
+  const showLoad = all.length > visible.length;
+
+  return `
+    <section class="hero fade-in">
+      <div class="om">ॐ</div>
+      <h1>Tales &amp; Parables<br/>of Sri Ramakrishna</h1>
+      <p class="subtitle">Two hundred and one stories — gathered from the conversations of the Master.</p>
+      <blockquote class="epigraph">
+        “As long as I live, so long do I learn.”
+        <cite>— Sri Ramakrishna</cite>
+      </blockquote>
+    </section>
+
+    ${counts.vk > 0 ? `<div class="filter-bar">
+      <button class="chip" data-speaker="all"  aria-pressed="${FILTER_SPEAKER === 'all'}">All<span class="count">${counts.all}</span></button>
+      <button class="chip" data-speaker="ramakrishna" aria-pressed="${FILTER_SPEAKER === 'ramakrishna'}">Sri Ramakrishna<span class="count">${counts.rk}</span></button>
+      <button class="chip" data-speaker="vivekananda" aria-pressed="${FILTER_SPEAKER === 'vivekananda'}">Swami Vivekananda<span class="count">${counts.vk}</span></button>
+    </div>` : ''}
+
+    <div class="filter-bar">
+      <button class="chip" data-bmfilter="off" aria-pressed="${!FILTER_BOOKMARKS}">All stories</button>
+      <button class="chip" data-bmfilter="on" aria-pressed="${FILTER_BOOKMARKS}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.5C.6 7.6 3.2 4 7 4c2 0 3.7 1 5 2.5C13.3 5 15 4 17 4c3.8 0 6.4 3.6 5 7.5C19.5 16.4 12 21 12 21Z"/></svg>Bookmarks<span class="count">${BOOKMARKS.size}</span></button>
+    </div>
+
+    <div class="toolbar">
+      <span class="count">${all.length} ${all.length === 1 ? "story" : "stories"}${FILTER_TEXT ? ` matching “${escapeHTML(FILTER_TEXT)}”` : ""}${FILTER_BOOKMARKS ? " bookmarked" : ""}</span>
+      <button class="cta-random" onclick="randomStory()">Read a random story →</button>
+    </div>
+
+    ${all.length ? `<div class="grid">${cards}</div>` : `<div class="empty">No stories match.</div>`}
+    ${showLoad ? `<button class="load-more" onclick="loadMore()">Load more (${all.length - visible.length} remaining)</button>` : ""}
+  `;
+}
+
+function renderStory(num) {
+  const idx = STORIES.findIndex(s => s.id === num);
+  if (idx < 0) return `<div class="reader"><a class="back" href="#/">← back</a><p class="empty">Story not found.</p></div>`;
+  const s = STORIES[idx];
+  const prev = idx > 0 ? STORIES[idx - 1] : null;
+  const next = idx < STORIES.length - 1 ? STORIES[idx + 1] : null;
+  const paras = paragraphize(s.content).map(p => `<p>${escapeHTML(p)}</p>`).join("");
+  const k = speakerKey(s);
+  return `
+    <article class="reader ${k} fade-in">
+      <a class="back" href="#/">← All stories</a>
+      <div class="meta">
+        <span class="speaker">${escapeHTML(speakerShort(s))}</span>
+        <span class="num">№ ${s.id}</span>
+      </div>
+      <h1>${escapeHTML(titleCase(s.title))}</h1>
+      <p class="source">${escapeHTML(s.source || "")}</p>
+      <div class="bm-row">${bmButton(s.id, true)}</div>
+      <div class="player" data-story="${s.id}">
+        <button class="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <span class="time">0:00</span>
+        <input class="scrub" type="range" min="0" max="100" value="0" aria-label="Seek" />
+        <button class="speed" title="Playback speed">1×</button>
+        <button class="cont" type="button" aria-pressed="${CONTINUOUS_PLAY}" title="Auto-play next story when this finishes">▷▷</button>
+      </div>
+      <div class="ornament">${k === "vk" ? "✦" : "❦"}</div>
+      <div class="body">${paras}</div>
+      <div class="endmark">⁂</div>
+      <nav class="reader-nav">
+        <a class="${prev ? '' : 'disabled'}" href="${prev ? `#/story/${prev.id}` : '#'}">
+          <span class="label">← Previous</span>
+          <span class="title">${prev ? escapeHTML(titleCase(prev.title)) : '—'}</span>
+        </a>
+        <a class="${next ? '' : 'disabled'} right" href="${next ? `#/story/${next.id}` : '#'}">
+          <span class="label">Next →</span>
+          <span class="title">${next ? escapeHTML(titleCase(next.title)) : '—'}</span>
+        </a>
+      </nav>
+    </article>
+  `;
+}
+
+function render() {
+  const route = parseRoute();
+  const app = document.getElementById("app");
+  app.innerHTML = route.name === "story" ? renderStory(route.id) : renderIndex();
+  if (route.name === "story") window.scrollTo({ top: 0, behavior: "instant" });
+
+  // Wire chip handlers (re-bind after each render)
+  document.querySelectorAll(".chip[data-speaker]").forEach(el => {
+    el.addEventListener("click", () => {
+      FILTER_SPEAKER = el.dataset.speaker;
+      RENDERED_PAGE = 1;
+      render();
+    });
+  });
+  document.querySelectorAll(".chip[data-bmfilter]").forEach(el => {
+    el.addEventListener("click", () => {
+      FILTER_BOOKMARKS = el.dataset.bmfilter === "on";
+      RENDERED_PAGE = 1;
+      render();
+    });
+  });
+  // Bookmark buttons
+  document.querySelectorAll(".bm[data-bm]").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = parseInt(el.dataset.bm, 10);
+      const willBe = !BOOKMARKS.has(id);
+      setBookmark(id, willBe);
+      el.classList.toggle("is-on", willBe);
+      el.setAttribute("aria-pressed", String(willBe));
+      el.innerHTML = heartSVG(willBe) + (el.querySelector("span") ? `<span>${willBe ? "Bookmarked" : "Bookmark"}</span>` : "");
+      el.title = willBe ? "Remove bookmark" : "Bookmark this story";
+      // Refresh the count chip on the index
+      const chip = document.querySelector('.chip[data-bmfilter="on"] .count');
+      if (chip) chip.textContent = BOOKMARKS.size;
+    });
+  });
+  // Audio player
+  setupPlayer();
+}
+
+// ---------- AUDIO PLAYER ----------
+function fmtTime(s) {
+  if (!Number.isFinite(s) || s < 0) s = 0;
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${String(sec).padStart(2, '0')}`;
+}
+
+function setupPlayer() {
+  const el = document.querySelector(".player[data-story]");
+  if (!el) return;
+  const storyId = parseInt(el.dataset.story, 10);
+  const playBtn = el.querySelector(".play");
+  const timeEl = el.querySelector(".time");
+  const scrub = el.querySelector(".scrub");
+  const speedBtn = el.querySelector(".speed");
+  const contBtn = el.querySelector(".cont");
+
+  speedBtn.textContent = PLAYBACK_SPEED.toString().replace(/(\.\d)0$/, "$1") + "×";
+  contBtn.setAttribute("aria-pressed", String(CONTINUOUS_PLAY));
+
+  if (!AUDIO_MANIFEST.has(storyId)) {
+    el.classList.add("unavail");
+    el.title = "Audio not yet generated for this story.";
+    timeEl.textContent = "—:—";
+    return;
+  }
+
+  // Reuse a single Audio object across stories so continuous-play stays connected
+  if (!CURRENT_AUDIO) CURRENT_AUDIO = new Audio();
+  const audio = CURRENT_AUDIO;
+  // If the audio's src is for a different story, set new src
+  const src = `audio/story-${storyId}.mp3`;
+  const isSameStory = audio.src.endsWith(src);
+  if (!isSameStory) {
+    audio.src = src;
+    audio.preload = "metadata";
+  }
+  audio.playbackRate = PLAYBACK_SPEED;
+
+  function setIcon(playing) {
+    playBtn.setAttribute("aria-label", playing ? "Pause" : "Play");
+    playBtn.innerHTML = playing
+      ? `<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>`
+      : `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+  }
+  setIcon(!audio.paused && !audio.ended);
+
+  function onTime() {
+    timeEl.textContent = `${fmtTime(audio.currentTime)} / ${fmtTime(audio.duration)}`;
+    if (audio.duration) scrub.value = String((audio.currentTime / audio.duration) * 100);
+  }
+  function onLoaded() {
+    timeEl.textContent = `0:00 / ${fmtTime(audio.duration)}`;
+    scrub.value = "0";
+  }
+  function onEnded() {
+    setIcon(false);
+    if (CONTINUOUS_PLAY) {
+      const next = STORIES.find(s => s.id === storyId + 1) ||
+                   STORIES[(STORIES.findIndex(s => s.id === storyId) + 1) % STORIES.length];
+      if (next && next.id !== storyId) {
+        // Navigate; the new render will pick up the same CURRENT_AUDIO and start playing
+        location.hash = `#/story/${next.id}`;
+        // Auto-play after navigation (small delay so the new audio source is set)
+        setTimeout(() => {
+          const a = CURRENT_AUDIO;
+          if (a) { a.play().catch(() => {}); }
+        }, 60);
+      }
+    }
+  }
+  function onPlay() { setIcon(true); }
+  function onPause() { setIcon(false); }
+
+  // Clean previous listeners (since we reuse one Audio across renders)
+  audio.ontimeupdate = onTime;
+  audio.onloadedmetadata = onLoaded;
+  audio.onended = onEnded;
+  audio.onplay = onPlay;
+  audio.onpause = onPause;
+
+  if (audio.duration) onLoaded();
+
+  playBtn.onclick = () => {
+    if (audio.paused) audio.play().catch(err => console.warn("Play failed:", err));
+    else audio.pause();
+  };
+  scrub.oninput = () => {
+    if (!audio.duration) return;
+    audio.currentTime = (parseFloat(scrub.value) / 100) * audio.duration;
+  };
+  speedBtn.onclick = () => {
+    const speeds = [1, 1.25, 1.5, 1.75, 2, 0.85];
+    const idx = speeds.indexOf(PLAYBACK_SPEED);
+    PLAYBACK_SPEED = speeds[(idx + 1) % speeds.length];
+    audio.playbackRate = PLAYBACK_SPEED;
+    speedBtn.textContent = PLAYBACK_SPEED.toString().replace(/(\.\d)0$/, "$1") + "×";
+    localStorage.setItem("tales-speed", String(PLAYBACK_SPEED));
+  };
+  contBtn.onclick = () => {
+    CONTINUOUS_PLAY = !CONTINUOUS_PLAY;
+    contBtn.setAttribute("aria-pressed", String(CONTINUOUS_PLAY));
+    localStorage.setItem("tales-continuous", CONTINUOUS_PLAY ? "1" : "0");
+  };
+}
+
+function loadMore() { RENDERED_PAGE++; render(); window.scrollBy({ top: 200, behavior: "smooth" }); }
+
+function randomStory() {
+  const pool = filterStories();
+  if (!pool.length) return;
+  const s = pool[Math.floor(Math.random() * pool.length)];
+  location.hash = `#/story/${s.id}`;
+}
+
+// Theme
+const THEME_KEY = "tales-theme";
+function applyTheme(t) {
+  document.body.setAttribute("data-theme", t);
+  localStorage.setItem(THEME_KEY, t);
+  document.getElementById("theme-toggle").textContent = t === "dark" ? "☼" : "☾";
+}
+applyTheme(localStorage.getItem(THEME_KEY) || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+document.getElementById("random").addEventListener("click", randomStory);
+document.getElementById("search").addEventListener("input", e => {
+  FILTER_TEXT = e.target.value.trim();
+  RENDERED_PAGE = 1;
+  if (location.hash && location.hash !== "#/") location.hash = "#/";
+  else render();
+});
+window.addEventListener("hashchange", render);
+window.addEventListener("keydown", e => {
+  const route = parseRoute();
+  if (route.name !== "story") return;
+  if (e.key === "ArrowRight") {
+    const idx = STORIES.findIndex(s => s.id === route.id);
+    if (idx < STORIES.length - 1) location.hash = `#/story/${STORIES[idx+1].id}`;
+  } else if (e.key === "ArrowLeft") {
+    const idx = STORIES.findIndex(s => s.id === route.id);
+    if (idx > 0) location.hash = `#/story/${STORIES[idx-1].id}`;
+  } else if (e.key === "Escape") {
+    location.hash = "#/";
+  }
+});
+
+// ---------- ACCOUNT MODAL ----------
+function showModal(html) {
+  const back = document.createElement("div");
+  back.className = "modal-backdrop";
+  back.innerHTML = `<div class="modal" role="dialog" aria-modal="true">
+    <button class="close" aria-label="Close" data-close>×</button>
+    ${html}
+  </div>`;
+  document.body.appendChild(back);
+  const close = () => back.remove();
+  back.querySelector("[data-close]").addEventListener("click", close);
+  back.addEventListener("click", e => { if (e.target === back) close(); });
+  document.addEventListener("keydown", function esc(e) {
+    if (e.key === "Escape") { close(); document.removeEventListener("keydown", esc); }
+  });
+  return { close, root: back };
+}
+
+function authForm({ mode = "signin", message = "" } = {}) {
+  const isSignup = mode === "signup";
+  const html = `
+    <h2>${isSignup ? "Create an account" : "Welcome back"}</h2>
+    <p class="modal-sub">${isSignup
+      ? "Sign up so your bookmarks sync across phone, tablet, and laptop. Free, takes ten seconds."
+      : "Sign in to access your bookmarks on any device."}</p>
+    <form id="authForm">
+      <label for="authEmail">Email</label>
+      <input id="authEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+      <label for="authPwd">Password</label>
+      <input id="authPwd" name="password" type="password" autocomplete="${isSignup ? 'new-password' : 'current-password'}" required minlength="8" placeholder="${isSignup ? 'At least 8 characters' : ''}" />
+      <button class="submit" type="submit">${isSignup ? "Create account" : "Sign in"}</button>
+      ${message ? `<div class="ok">${escapeHTML(message)}</div>` : ""}
+      <div class="errSlot"></div>
+    </form>
+    <div class="toggle">
+      ${isSignup ? "Already have an account?" : "New here?"}
+      <button type="button" data-toggle>${isSignup ? "Sign in" : "Create an account"}</button>
+    </div>
+    <button class="skip" data-skip>Continue without an account</button>
+  `;
+  const { close, root } = showModal(html);
+  const form = root.querySelector("#authForm");
+  const errSlot = root.querySelector(".errSlot");
+  const submitBtn = root.querySelector(".submit");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errSlot.innerHTML = "";
+    const email = root.querySelector("#authEmail").value.trim();
+    const password = root.querySelector("#authPwd").value;
+    submitBtn.disabled = true;
+    submitBtn.textContent = isSignup ? "Creating…" : "Signing in…";
+    try {
+      const r = await fetch(`/api/auth/${isSignup ? "register" : "login"}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ email, password }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || `${r.status} error`);
+      USER = j.user;
+      // Sync any local bookmarks → server
+      if (localBookmarks().size) {
+        BOOKMARKS = await syncLocalToServer();
+      } else {
+        const sb = await fetchServerBookmarks();
+        if (sb) BOOKMARKS = sb;
+      }
+      updateAccountButton();
+      render();
+      close();
+    } catch (err) {
+      errSlot.innerHTML = `<div class="err">${escapeHTML(err.message || "Something went wrong.")}</div>`;
+      submitBtn.disabled = false;
+      submitBtn.textContent = isSignup ? "Create account" : "Sign in";
+    }
+  });
+  root.querySelector("[data-toggle]").addEventListener("click", () => { close(); authForm({ mode: isSignup ? "signin" : "signup" }); });
+  root.querySelector("[data-skip]").addEventListener("click", close);
+  setTimeout(() => root.querySelector("#authEmail").focus(), 50);
+}
+
+function meModal() {
+  const html = `
+    <h2>Your account</h2>
+    <p class="modal-sub">Bookmarks sync automatically while you're signed in.</p>
+    <div class="me-row">
+      <span class="email">${escapeHTML(USER.email)}</span>
+      <button class="logout" data-logout>Sign out</button>
+    </div>
+  `;
+  const { close, root } = showModal(html);
+  root.querySelector("[data-logout]").addEventListener("click", async () => {
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" });
+    USER = null;
+    BOOKMARKS = localBookmarks(); // fall back to local
+    updateAccountButton();
+    render();
+    close();
+  });
+}
+
+document.getElementById("account").addEventListener("click", () => {
+  if (USER) meModal(); else authForm({ mode: "signin" });
+});
+
+load();
+
+// Register service worker (PWA)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => console.warn("SW registration failed:", err));
+  });
+}
+</script>
+</body>
+</html>
