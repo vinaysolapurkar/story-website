@@ -1,6 +1,6 @@
 // Service worker for "Stories of the Masters"
 // Bump VERSION on every release so old caches are evicted.
-const VERSION = "v6";
+const VERSION = "v7";
 const CORE = `core-${VERSION}`;
 const RUNTIME = `runtime-${VERSION}`;
 

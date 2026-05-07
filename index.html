@@ -194,6 +194,26 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px; }
   font-size: 13px;
   margin-bottom: 18px;
 }
+.cat-bar {
+  margin-bottom: 24px;
+  padding-bottom: 4px;
+  /* Allow horizontal scroll on small screens instead of wrap */
+}
+@media (max-width: 720px) {
+  .cat-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-left: -16px; margin-right: -16px;
+    padding-left: 16px; padding-right: 16px;
+    padding-bottom: 8px;
+  }
+  .cat-bar::-webkit-scrollbar { display: none; }
+  .cat-bar .chip { flex: 0 0 auto; scroll-snap-align: start; }
+}
 .chip {
   padding: 6px 14px;
   font-size: 13px;
@@ -705,6 +725,7 @@ let STORIES = [];
 let FILTER_TEXT = "";
 let FILTER_SPEAKER = "all"; // 'all' | 'ramakrishna' | 'vivekananda'
 let FILTER_BOOKMARKS = false;
+let FILTER_CATEGORY = "All"; // "All" or one of the category names
 let PAGE_SIZE = 60;
 let RENDERED_PAGE = 1;
 
@@ -873,10 +894,27 @@ function filterStories() {
     if (FILTER_SPEAKER === "ramakrishna" && speakerKey(s) !== "rk") return false;
     if (FILTER_SPEAKER === "vivekananda" && speakerKey(s) !== "vk") return false;
     if (FILTER_BOOKMARKS && !BOOKMARKS.has(s.id)) return false;
+    if (FILTER_CATEGORY !== "All" && s.category !== FILTER_CATEGORY) return false;
     if (!FILTER_TEXT) return true;
     const f = FILTER_TEXT.toLowerCase();
     return s.title.toLowerCase().includes(f) || s.content.toLowerCase().includes(f);
   });
+}
+
+function categoryCounts() {
+  const m = new Map();
+  for (const s of STORIES) {
+    const c = s.category || "Miscellaneous";
+    m.set(c, (m.get(c) || 0) + 1);
+  }
+  // Stable order: defined taxonomy first, then alphabetical for any extras, then "Miscellaneous" last
+  const TAXONOMY = ["Faith & Devotion","Maya & Illusion","Renunciation","Discrimination (Viveka)","Guru & Disciple","Lust & Gold","Compassion & Service","Spiritual Practice","Surrender & Self-Effort","Knowledge of the Self","God-Realization","Humility","The Mind","Society & Worldliness","Miscellaneous"];
+  const out = [];
+  for (const c of TAXONOMY) {
+    if (m.has(c)) { out.push([c, m.get(c)]); m.delete(c); }
+  }
+  for (const [c, n] of [...m.entries()].sort()) out.push([c, n]);
+  return out;
 }
 
 function renderIndex() {
@@ -894,7 +932,7 @@ function renderIndex() {
     return `
     <a class="card ${k}" href="#/story/${s.id}">
       <div class="meta">
-        <span class="speaker">${escapeHTML(speakerShort(s))}</span>
+        <span class="speaker">${escapeHTML(s.category || "Miscellaneous")}</span>
         <span class="num">№ ${s.id}</span>
       </div>
       <h2>${escapeHTML(titleCase(s.title))}</h2>
@@ -923,8 +961,13 @@ function renderIndex() {
     </div>` : ''}
 
     <div class="filter-bar">
-      <button class="chip" data-bmfilter="off" aria-pressed="${!FILTER_BOOKMARKS}">All stories</button>
+      <button class="chip" data-bmfilter="off" aria-pressed="${!FILTER_BOOKMARKS}">All</button>
       <button class="chip" data-bmfilter="on" aria-pressed="${FILTER_BOOKMARKS}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.5C.6 7.6 3.2 4 7 4c2 0 3.7 1 5 2.5C13.3 5 15 4 17 4c3.8 0 6.4 3.6 5 7.5C19.5 16.4 12 21 12 21Z"/></svg>Bookmarks<span class="count">${BOOKMARKS.size}</span></button>
+    </div>
+
+    <div class="filter-bar cat-bar">
+      <button class="chip" data-cat="All" aria-pressed="${FILTER_CATEGORY === 'All'}">All themes<span class="count">${STORIES.length}</span></button>
+      ${categoryCounts().map(([c, n]) => `<button class="chip" data-cat="${escapeHTML(c)}" aria-pressed="${FILTER_CATEGORY === c}">${escapeHTML(c)}<span class="count">${n}</span></button>`).join("")}
     </div>
 
     <div class="toolbar">
@@ -949,7 +992,7 @@ function renderStory(num) {
     <article class="reader ${k} fade-in">
       <a class="back" href="#/">← All stories</a>
       <div class="meta">
-        <span class="speaker">${escapeHTML(speakerShort(s))}</span>
+        <span class="speaker">${escapeHTML(s.category || "Miscellaneous")}</span>
         <span class="num">№ ${s.id}</span>
       </div>
       <h1>${escapeHTML(titleCase(s.title))}</h1>
@@ -998,6 +1041,14 @@ function render() {
       FILTER_BOOKMARKS = el.dataset.bmfilter === "on";
       RENDERED_PAGE = 1;
       render();
+    });
+  });
+  document.querySelectorAll(".chip[data-cat]").forEach(el => {
+    el.addEventListener("click", () => {
+      FILTER_CATEGORY = el.dataset.cat;
+      RENDERED_PAGE = 1;
+      render();
+      window.scrollTo({ top: 0, behavior: "instant" });
     });
   });
   // Bookmark buttons
