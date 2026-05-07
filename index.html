@@ -947,18 +947,12 @@ function renderIndex() {
     <section class="hero fade-in">
       <div class="om">ॐ</div>
       <h1>Tales &amp; Parables<br/>of Sri Ramakrishna</h1>
-      <p class="subtitle">Two hundred and one stories — gathered from the conversations of the Master.</p>
+      <p class="subtitle">${STORIES.length} stories — gathered from the conversations of the Master and the Vedanta Kesari archive.</p>
       <blockquote class="epigraph">
         “As long as I live, so long do I learn.”
         <cite>— Sri Ramakrishna</cite>
       </blockquote>
     </section>
-
-    ${counts.vk > 0 ? `<div class="filter-bar">
-      <button class="chip" data-speaker="all"  aria-pressed="${FILTER_SPEAKER === 'all'}">All<span class="count">${counts.all}</span></button>
-      <button class="chip" data-speaker="ramakrishna" aria-pressed="${FILTER_SPEAKER === 'ramakrishna'}">Sri Ramakrishna<span class="count">${counts.rk}</span></button>
-      <button class="chip" data-speaker="vivekananda" aria-pressed="${FILTER_SPEAKER === 'vivekananda'}">Swami Vivekananda<span class="count">${counts.vk}</span></button>
-    </div>` : ''}
 
     <div class="filter-bar">
       <button class="chip" data-bmfilter="off" aria-pressed="${!FILTER_BOOKMARKS}">All</button>
