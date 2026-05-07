@@ -723,7 +723,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px; }
 const STORIES_URL = "stories.json";
 let STORIES = [];
 let FILTER_TEXT = "";
-let FILTER_SPEAKER = "all"; // 'all' | 'ramakrishna' | 'vivekananda'
+let FILTER_SPEAKER = "all"; // 'all' | 'ramakrishna' | 'vk'
 let FILTER_BOOKMARKS = false;
 let FILTER_CATEGORY = "All"; // "All" or one of the category names
 let PAGE_SIZE = 60;
@@ -892,7 +892,7 @@ function paragraphize(text) {
 function filterStories() {
   return STORIES.filter(s => {
     if (FILTER_SPEAKER === "ramakrishna" && speakerKey(s) !== "rk") return false;
-    if (FILTER_SPEAKER === "vivekananda" && speakerKey(s) !== "vk") return false;
+    if (FILTER_SPEAKER === "vk" && speakerKey(s) !== "vk") return false;
     if (FILTER_BOOKMARKS && !BOOKMARKS.has(s.id)) return false;
     if (FILTER_CATEGORY !== "All" && s.category !== FILTER_CATEGORY) return false;
     if (!FILTER_TEXT) return true;
@@ -955,7 +955,9 @@ function renderIndex() {
     </section>
 
     <div class="filter-bar">
-      <button class="chip" data-bmfilter="off" aria-pressed="${!FILTER_BOOKMARKS}">All</button>
+      <button class="chip" data-speaker="all" aria-pressed="${FILTER_SPEAKER === 'all'}">All sources<span class="count">${counts.all}</span></button>
+      <button class="chip" data-speaker="ramakrishna" aria-pressed="${FILTER_SPEAKER === 'ramakrishna'}">Sri Ramakrishna parables<span class="count">${counts.rk}</span></button>
+      <button class="chip" data-speaker="vk" aria-pressed="${FILTER_SPEAKER === 'vk'}">Vedanta Kesari<span class="count">${counts.vk}</span></button>
       <button class="chip" data-bmfilter="on" aria-pressed="${FILTER_BOOKMARKS}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.5C.6 7.6 3.2 4 7 4c2 0 3.7 1 5 2.5C13.3 5 15 4 17 4c3.8 0 6.4 3.6 5 7.5C19.5 16.4 12 21 12 21Z"/></svg>Bookmarks<span class="count">${BOOKMARKS.size}</span></button>
     </div>
 
@@ -1032,7 +1034,7 @@ function render() {
   });
   document.querySelectorAll(".chip[data-bmfilter]").forEach(el => {
     el.addEventListener("click", () => {
-      FILTER_BOOKMARKS = el.dataset.bmfilter === "on";
+      FILTER_BOOKMARKS = !FILTER_BOOKMARKS;
       RENDERED_PAGE = 1;
       render();
     });
